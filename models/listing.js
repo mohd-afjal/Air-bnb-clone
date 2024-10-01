@@ -6,17 +6,13 @@ const listingSchema  = new Schema({
        title:{
         type:String,
         required: true,
+        description:String,
     },
 
-       description:String,
+      //  description:String,
        image:{
-        type:String,
-        default:  "https://unsplash.com/photos/a-person-running-into-the-ocean-with-a-surfboard-wu0qo6Uai34" ,
-
-         set:(v)   => 
-             v === "" 
-               ? "https://unsplash.com/photos/a-person-running-into-the-ocean-with-a-surfboard-wu0qo6Uai34" 
-               : v ,
+        url: String,
+        filename: String,
     },
        price: Number,
        location:String,
@@ -30,6 +26,7 @@ const listingSchema  = new Schema({
         type:Schema.Types.ObjectId,
         ref:"User",
       },
+     
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{
